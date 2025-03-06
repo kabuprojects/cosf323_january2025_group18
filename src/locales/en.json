@@ -1,0 +1,11 @@
+{
+    "courseTitle": "Introduction to Cybersecurity",
+    "lesson1Title": "Understanding Cyber Threats",
+    "lesson1Content": "In this lesson, you will learn about various types of cyber threats...",
+    "lesson2Title": "Network Security",
+    "lesson2Content": "This lesson covers the basics of network security...",
+    "lesson3Title": "Cryptography",
+    "lesson3Content": "Learn about cryptographic techniques and their applications...",
+    "lesson4Title": "Incident Response",
+    "lesson4Content": "This lesson focuses on how to respond to cybersecurity incidents..."
+  }

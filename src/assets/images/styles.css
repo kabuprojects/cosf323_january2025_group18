@@ -1,0 +1,358 @@
+/* General styles for the application */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Styles for the fixed header */
+.fixed-header {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  width: calc(100% - 200px); /* Adjust for sidebar width */
+  top: 0;
+  z-index: 1000;
+}
+
+.fixed-header h1 {
+  margin: 0;
+}
+
+.fixed-header p {
+  margin: 10px 0;
+}
+
+.button-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.button-container .btn {
+  margin-left: 10px;
+}
+
+/* Styles for the whitish region */
+.whitish-region {
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 100px; /* Adjust for fixed header height */
+  margin-right: 200px; /* Adjust for sidebar width */
+  min-height: calc(100vh - 160px); /* Adjust for header and footer height */
+  position: relative;
+  color: #333; /* Dark text color for visibility */
+}
+
+/* Styles for the course content and lesson containers */
+.course-content-container {
+  padding: 20px;
+  margin-top: 100px; /* Adjust for fixed header height */
+  margin-right: 200px; /* Adjust for sidebar width */
+}
+
+.course-select {
+  width: 100%;
+  padding: 10px;
+  margin: 20px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.save-button {
+  display: block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.save-button:hover {
+  background-color: #0056b3;
+}
+
+/* Styles for the footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+/* Styles for the sidebar */
+.sidebar {
+  background-color: #444;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 200px;
+}
+
+.sidebar nav a {
+  display: block;
+  color: white;
+  padding: 10px 0;
+  text-decoration: none;
+}
+
+.sidebar nav a:hover {
+  background-color: #555;
+}
+
+.lesson-schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lesson-container {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lesson-container h3 {
+  margin: 0;
+}
+
+.lesson-container .btn {
+  margin-left: 10px;
+}
+
+/* Styles for the error message */
+.error-message {
+  color: red;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Styles for the main content */
+main {
+  padding: 20px;
+  margin-right: 220px; /* Adjust for sidebar width */
+  margin-top: 100px; /* Adjust for fixed header height */
+}
+
+/* Styles for the image container */
+.image-container {
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.full-width-image {
+  width: 100vw; /* Expand to the full viewport width */
+  height: auto;
+}
+
+/* Styles for the Login component */
+.login-container {
+  max-width: 100%; /* Expand to full width */
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 40px); /* Full viewport height minus padding */
+  color: #333; /* Dark text color for visibility */
+  background-image: url('/src/assets/images/courses.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #555;
+}
+
+/* Styles for the cybersecurity categories */
+.cybersecurity-categories {
+  margin-top: 20px;
+}
+
+#category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category-item {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.category-item:hover {
+  background-color: #0056b3;
+}
+
+.category-content {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  border-radius: 5px;
+  color: #333; /* Dark text color for visibility */
+}
+
+/* Styles for the community content */
+.community-container {
+  padding: 20px;
+  margin-top: 100px; /* Adjust for fixed header height */
+  margin-right: 200px; /* Adjust for sidebar width */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  border-radius: 5px;
+  color: #333; /* Dark text color for visibility */
+}
+
+.community-content {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  border-radius: 5px;
+  color: #333; /* Dark text color for visibility */
+}
+
+/* Styles for the profile content */
+.profile-container {
+  padding: 20px;
+  margin-top: 100px; /* Adjust for fixed header height */
+  margin-right: 200px; /* Adjust for sidebar width */
+  background-image: url('/src/assets/images/profile.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.profile-content {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  border-radius: 5px;
+  color: #333; /* Dark text color for visibility */
+}
+
+/* Styles for the profile image */
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+/* Styles for the quizzes content */
+.quizzes-container {
+  padding: 20px;
+  margin-top: 100px; /* Adjust for fixed header height */
+  margin-right: 200px; /* Adjust for sidebar width */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  border-radius: 5px;
+  color: #333; /* Dark text color for visibility */
+}
+
+.quizzes-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.quizzes-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.quizzes-container li {
+  background-color: #f4f4f4;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.quizzes-container li a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.quizzes-container li a:hover {
+  text-decoration: underline;
+}
+
+/* Styles for the courses page */
+.courses-container {
+  background-image: url('/src/assets/images/courses.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 100px; /* Adjust for fixed header height */
+  margin-right: 200px; /* Adjust for sidebar width */
+  min-height: calc(100vh - 160px); /* Adjust for header and footer height */
+  position: relative;
+}
+
+/* Apply background image to all specified pages */
+.register-container,
+.login-container,
+.community-container,
+.quizzes-container,
+.contact-container {
+  background-image: url('/src/assets/images/courses.jpg');
+  background-size: cover;
+  background-position: center;
+}
