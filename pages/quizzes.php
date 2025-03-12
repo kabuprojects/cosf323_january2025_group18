@@ -52,23 +52,23 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="/index.php">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="/pages/quizzes.php">Quizzes</a></li>
-                <li class="nav-item"><a class="nav-link" href="/pages/services.php">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="/pages/feedback.php">Feedback</a></li>
-                <li class="nav-item"><a class="nav-link" href="/pages/about.php">About</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Choose Language
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">English</a>
-                        <a class="dropdown-item" href="#">Swahili</a>
+                        <a class="dropdown-item" href="/pages/englishquizzes.php">English</a>
+                        <a class="dropdown-item" href="/pages/swahiliquizzes.php">Swahili</a>
                     </div>
                 </li>
-                <li class="nav-item"><a class="nav-link btn-get-started" href="/authentication/login.php">LOGIN</a></li>
-            </ul>
+                <li class="nav-item"><a class="nav-link" href="/pages/services.php">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="/pages/feedback.php">Feedback</a></li>
+                <li class="nav-item"><a class="nav-link" href="/pages/about.php">About</a></li>
         </div>
     </nav>
-
+    <br>
+    <h1>Please Choose your preferred language</h1>
+    <h1>Tafadhali chagua lugha unayotaka</h1>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
