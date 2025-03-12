@@ -41,6 +41,15 @@
             padding: 10px 30px;
             font-size: 18px;
         }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -50,12 +59,14 @@
         <a class="navbar-brand" href="#" style="font-size: 40px;">Jua<span style="color:rgba(8, 235, 20, 0.8);">Cyber</span></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/index.php">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="/pages/quizzes.php">Quizzes</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="/pages/services.php">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="/pages/feedback.php">Feedback</a></li>
+                <li class="nav-item"><a class="nav-link" href="/pages/about.php">About</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Drop Down
+                        Choose Language
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">English</a>
@@ -72,6 +83,9 @@
         <p>We are a team of talented Cybersecurity trainers. Join us today</p>
         <a href="/authentication/register.php" class="btn btn-get-started">Get Started</a>
     </div>
+    <footer>
+        <p>© 2025 JuaCyber Platform</p>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
