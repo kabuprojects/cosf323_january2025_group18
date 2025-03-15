@@ -10,6 +10,7 @@
         body {
             background-color: #2c3e50;
             color: white;
+
         }
 
         .hero {
@@ -61,13 +62,79 @@
                     </div>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/pages/quizzes.php">Quizzes</a></li>
-                <li class="nav-item"><a class="nav-link" href="/pages/services.php">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="/pages/contactus.php">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="/pages/feedback.php">Feedback</a></li>
                 <li class="nav-item"><a class="nav-link" href="/pages/about.php">About</a></li>
                 <li class="nav-item"><a class="nav-link btn-get-started" href="/authentication/login.php">LOGIN</a></li>
             </ul>
         </div>
     </nav>
+    <?php
+
+    // Determine the selected language (default: English)
+    $language = isset($_GET['lang']) && $_GET['lang'] === 'sw' ? 'sw' : 'en';
+
+    // Content for both languages
+    $content = [
+        'en' => [
+            'title' => 'Welcome to JuaCyber',
+            'headline' => 'Our Mission',
+            'mission' => 'Our mission is to empower Kenyans with essential cybersecurity knowledge, helping them stay safe in the digital world.',
+            'about' => 'JuaCyber is a cybersecurity awareness and education platform designed specifically for Kenyan users. We provide accessible and easy-to-understand cybersecurity resources to protect individuals, businesses, and communities from digital threats.',
+            'why_choose' => 'Why Choose JuaCyber?',
+            'reasons' => [
+                'Localized content tailored for Kenya',
+                'Simple, practical cybersecurity lessons',
+                'Interactive quizzes to test your knowledge',
+                'Guidance on online safety, fraud prevention, and data protection'
+            ],
+            'image_alt' => 'Cybersecurity awareness illustration',
+        ],
+        'sw' => [
+            'title' => 'Karibu JuaCyber',
+            'headline' => 'Lengo Letu',
+            'mission' => 'Lengo letu ni kuwawezesha Wakenya kwa maarifa muhimu ya usalama wa mtandaoni, ili kuwasaidia kubaki salama katika ulimwengu wa kidijitali.',
+            'about' => 'JuaCyber ni jukwaa la uhamasishaji na elimu ya usalama wa mtandaoni lililoundwa mahsusi kwa watumiaji wa Kenya. Tunatoa rasilimali rahisi na zinazofikika ili kusaidia watu binafsi, biashara, na jamii kujilinda dhidi ya vitisho vya mtandaoni.',
+            'why_choose' => 'Kwa Nini Uchague JuaCyber?',
+            'reasons' => [
+                'Maudhui yaliyoelekezwa kwa soko la Kenya',
+                'Masomo ya usalama mtandaoni yaliyo rahisi na ya vitendo',
+                'Maswali ya majaribio ya kujaribu uelewa wako',
+                'Mwongozo kuhusu usalama wa mtandaoni, kuzuia udanganyifu, na ulinzi wa data'
+            ],
+            'image_alt' => 'Mchoro wa uhamasishaji wa usalama mtandaoni',
+        ]
+    ];
+
+    ?>
+
+    <div class="container">
+        <h1><?php echo $content[$language]['title']; ?></h1>
+        <br>
+        <h1><?php echo $content[$language]['headline']; ?></h1>
+        <br>
+
+        <p><strong><?php echo $content[$language]['mission']; ?></strong></p>
+
+        <p><?php echo $content[$language]['about']; ?></p>
+
+        <h3><?php echo $content[$language]['why_choose']; ?></h3>
+        <ul>
+            <?php foreach ($content[$language]['reasons'] as $reason) { ?>
+                <li><?php echo $reason; ?></li>
+            <?php } ?>
+        </ul>
+        <img src="/images/cybersss.jpg" alt="<?php echo $content[$language]['image_alt']; ?>" width="0%">
+    </div>
+
+    <!-- Language Selection -->
+    <div>
+        <a href="about.php?lang=en">English</a> | <a href="about.php?lang=sw">Swahili</a>
+    </div>
+
+    <?php
+    ?>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>

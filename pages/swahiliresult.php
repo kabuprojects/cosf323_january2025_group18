@@ -1,3 +1,19 @@
+<?php
+//session_start();
+include '../authentication/db.php'; // Database connection
+
+// Set default language if not chosen
+if (!isset($_SESSION['lang'])) {
+    $_SESSION['lang'] = 'English';
+}
+
+// Fetch Courses from DB
+$column_title = $_SESSION['lang'] == 'English' ? 'title_en' : 'title_sw';
+$column_content = $_SESSION['lang'] == 'English' ? 'content_en' : 'content_sw';
+
+$query = "SELECT $column_title AS title, $column_content AS content, category FROM cybersecurity_content ORDER BY created_at DESC";
+$result = mysqli_query($conn, $query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,29 +67,50 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="/index.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/pages/quizzes.php">Quizzes</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Choose Language
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/pages/englishquizzes.php">English</a>
-                        <a class="dropdown-item" href="/pages/swahiliquizzes.php">Swahili</a>
+                        <a class="dropdown-item" href="/pages/english.php">English</a>
+                        <a class="dropdown-item" href="/pages/swahili.php">Swahili</a>
                     </div>
                 </li>
+                <li class="nav-item"><a class="nav-link" href="/pages/quizzes.php">Quizzes</a></li>
                 <li class="nav-item"><a class="nav-link" href="/pages/contactus.php">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="/pages/feedback.php">Feedback</a></li>
                 <li class="nav-item"><a class="nav-link" href="/pages/about.php">About</a></li>
         </div>
     </nav>
-    <br>
-    <a href="/pages/englishquizzes.php">Please choose your prefered language!</a>
-    <br>
-    <br>
-    <a href="/pages/swahiliquizzes.php">Tafadhali chagua lugha unayopendelea!</a>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
 
-</html>
+    <br>
+    <?php
+    session_start();
+
+    if (!isset($_SESSION['score'])) {
+        header("Location: swahiliquizzes.php");
+        exit();
+    }
+
+    $score = $_SESSION['score'];
+    $totalQuestions = 30; // Update this to the total number of questions
+    $percentage = ($score / $totalQuestions) * 100;
+
+    session_destroy();
+    ?>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Matokeo ya Jaribio</title>
+    </head>
+
+    <body>
+        <h1>Matokeo Yako</h1>
+        <p>Umepata Alama: <?php echo $score; ?> Kati Ya <?php echo $totalQuestions; ?> (<?php echo $percentage; ?>%)</p>
+        <a href="swahiliquizzes.php">Fanya Jaribio Tena</a>
+    </body>
+
+    </html>

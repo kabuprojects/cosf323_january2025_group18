@@ -77,7 +77,7 @@ $result = mysqli_query($conn, $query);
                     </div>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/pages/quizzes.php">Quizzes</a></li>
-                <li class="nav-item"><a class="nav-link" href="/pages/services.php">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="/pages/contactus.php">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="/pages/feedback.php">Feedback</a></li>
                 <li class="nav-item"><a class="nav-link" href="/pages/about.php">About</a></li>
         </div>
@@ -86,11 +86,14 @@ $result = mysqli_query($conn, $query);
     <br>
     <?php
     // Cybersecurity Threats Content for English
+    $awareness = [
+        "title" => "Cybersecurity Awareness in Kenya",
+        "intro" => "Welcome to our Cybersecurity Education Platform. This section provides key lessons on staying safe online in Kenya.",
+        "threats_title" => "Common Cyber Threats in Kenya"
+    ];
     $content = [
         [
-            "title" => "Cybersecurity Awareness in Kenya",
-            "intro" => "Cybersecurity awareness is crucial in Kenya due to the rising number of cyber threats. Here are some common threats and safety measures to protect youself.",
-            "title" => "Mobile Money Scams",
+            "title" => "1. Mobile Money Scams",
             "definition" => "A type of fraud where attackers trick victims into sending money or revealing mobile banking details.",
             "safety_measures" => [
                 "Always verify caller identity before sending money.",
@@ -102,7 +105,7 @@ $result = mysqli_query($conn, $query);
             "case_study" => "A Nairobi businessman lost KSh 50,000 after receiving a fake 'SIM card upgrade' request."
         ],
         [
-            "title" => "Phishing Attacks",
+            "title" => "2. Phishing Attacks",
             "definition" => "A type of cybercrime where attackers impersonate legitimate organizations to steal sensitive data.",
             "safety_measures" => [
                 "Always verify email sources.",
@@ -113,7 +116,7 @@ $result = mysqli_query($conn, $query);
             "real_life_example" => "In 2022, Kenyan banks reported an increase in phishing scams where attackers mimicked bank emails to trick customers into revealing their online banking details."
         ],
         [
-            "title" => "Identity Theft",
+            "title" => "3. Identity Theft",
             "definition" => "Unauthorized use of someone’s personal information for fraud.",
             "safety_measures" => [
                 "Use strong, unique passwords.",
@@ -124,7 +127,7 @@ $result = mysqli_query($conn, $query);
             "real_life_example" => "A Nairobi-based company lost KSh 2 million when attackers used stolen employee credentials to gain access to payroll systems."
         ],
         [
-            "title" => "Ransomware",
+            "title" => "4. Ransomware",
             "definition" => "Malware that encrypts files and demands a ransom for decryption.",
             "safety_measures" => [
                 "Regularly back up your data.",
@@ -135,7 +138,7 @@ $result = mysqli_query($conn, $query);
             "case_study" => "In 2023, a Kenyan healthcare provider was attacked by the 'WannaCry' ransomware, leading to patient data being locked for several days."
         ],
         [
-            "title" => "Social Engineering Attacks",
+            "title" => "5. Social Engineering Attacks",
             "definition" => "Manipulating individuals to reveal confidential information.",
             "safety_measures" => [
                 "Verify caller identities before sharing information.",
@@ -146,7 +149,7 @@ $result = mysqli_query($conn, $query);
             "case_study" => "A Kenyan government employee unknowingly gave access to classified files after receiving a fake IT support call."
         ],
         [
-            "title" => "Pyramid and Ponzi Schemes",
+            "title" => "6. Pyramid and Ponzi Schemes",
             "definition" => "Fraudulent investment schemes promising high returns with little risk.",
             "safety_measures" => [
                 "Be cautious of 'too good to be true' investment offers.",
@@ -157,7 +160,7 @@ $result = mysqli_query($conn, $query);
             "real_life_example" => "In 2021, thousands of Kenyans lost money in the 'Amazon Web Worker' Ponzi scheme, which collapsed after luring investors with fake returns."
         ],
         [
-            "title" => "Data Breaches",
+            "title" => "7. Data Breaches",
             "definition" => "Unauthorized access to confidential data.",
             "safety_measures" => [
                 "Encrypt sensitive files.",
@@ -168,7 +171,7 @@ $result = mysqli_query($conn, $query);
             "real_life_example" => "In 2021, a major Kenyan telecom provider faced a breach where thousands of customer records were exposed online."
         ],
         [
-            "title" => "Malware & Viruses",
+            "title" => "8. Malware & Viruses",
             "definition" => "Malicious software that disrupts or damages systems.",
             "safety_measures" => [
                 "Keep software updated.",
@@ -176,29 +179,42 @@ $result = mysqli_query($conn, $query);
                 "Avoid downloading files from unknown sources."
             ],
             "regulation" => "Kenyan Regulation: Computer Misuse Act - Outlaws creating and distributing malware.",
-            "case_study" => "The 'ILOVEYOU' virus once infected thousands of Kenyan computers, leading to massive data loss."
+            "case_study" => "The 'ILOVEYOU' virus once infected thousands of Kenyan computers, leading to massive data loss.",
+            "cta" => "Take our cybersecurity quiz to test your knowledge!",
         ]
     ];
     ?>
+
+    <div class="awareness">
+        <h1><?php echo htmlspecialchars($awareness['title']); ?></h1>
+        <p><?php echo htmlspecialchars($awareness['intro']); ?></p>
+        <h2><?php echo htmlspecialchars($awareness['threats_title']); ?></h2>
+    </div>
+
     <?php foreach ($content as $threat): ?>
         <div class="threat">
-            <h2><?php echo $threat['title']; ?></h2>
-            <p><strong>Definition:</strong> <?php echo $threat['definition']; ?></p>
+            <h2><?php echo htmlspecialchars($threat['title']); ?></h2>
+            <p><strong>Definition:</strong> <?php echo htmlspecialchars($threat['definition']); ?></p>
             <p><strong>Safety Measures:</strong></p>
             <ul>
                 <?php foreach ($threat['safety_measures'] as $measure): ?>
-                    <li><?php echo $measure; ?></li>
+                    <li><?php echo htmlspecialchars($measure); ?></li>
                 <?php endforeach; ?>
             </ul>
-            <p><strong>Regulation:</strong> <?php echo $threat['regulation']; ?></p>
+            <p><strong>Regulation:</strong> <?php echo htmlspecialchars($threat['regulation']); ?></p>
             <?php if (isset($threat['real_life_example'])): ?>
-                <p><strong>Real-Life Example:</strong> <?php echo $threat['real_life_example']; ?></p>
+                <p><strong>Real-Life Example:</strong> <?php echo htmlspecialchars($threat['real_life_example']); ?></p>
             <?php endif; ?>
             <?php if (isset($threat['case_study'])): ?>
-                <p><strong>Case Study:</strong> <?php echo $threat['case_study']; ?></p>
+                <p><strong>Case Study:</strong> <?php echo htmlspecialchars($threat['case_study']); ?></p>
+            <?php endif; ?>
+            <?php if (isset($threat['cta'])): ?>
+                <p><strong></strong> <a href="/pages/englishquizzes.php"><?php echo htmlspecialchars($threat['cta']); ?></a></p>
             <?php endif; ?>
         </div>
     <?php endforeach; ?>
+
+
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -1,3 +1,19 @@
+<?php
+//session_start();
+include '../authentication/db.php'; // Database connection
+
+// Set default language if not chosen
+if (!isset($_SESSION['lang'])) {
+    $_SESSION['lang'] = 'English';
+}
+
+// Fetch Courses from DB
+$column_title = $_SESSION['lang'] == 'English' ? 'title_en' : 'title_sw';
+$column_content = $_SESSION['lang'] == 'English' ? 'content_en' : 'content_sw';
+
+$query = "SELECT $column_title AS title, $column_content AS content, category FROM cybersecurity_content ORDER BY created_at DESC";
+$result = mysqli_query($conn, $query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,15 +77,40 @@
                     </div>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/pages/quizzes.php">Quizzes</a></li>
-                <li class="nav-item"><a class="nav-link" href="/pages/services.php">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="/pages/contactus.php">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="/pages/feedback.php">Feedback</a></li>
                 <li class="nav-item"><a class="nav-link" href="/pages/about.php">About</a></li>
         </div>
     </nav>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+    <br>
+    <?php
+    session_start();
 
-</html>
+    if (!isset($_SESSION['score'])) {
+        header("Location: englishquizzes.php");
+        exit();
+    }
+
+    $score = $_SESSION['score'];
+    $totalQuestions = 30; // Update this to the total number of questions
+    $percentage = ($score / $totalQuestions) * 100;
+
+    session_destroy();
+    ?>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Quiz Results</title>
+    </head>
+
+    <body>
+        <h1>Your Results</h1>
+        <p>You scored: <?php echo $score; ?> out of <?php echo $totalQuestions; ?> (<?php echo $percentage; ?>%)</p>
+        <a href="englishquizzes.php">Take the quiz again</a>
+    </body>
+
+    </html>
