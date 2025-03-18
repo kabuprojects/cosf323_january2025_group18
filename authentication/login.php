@@ -88,6 +88,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .error {
             color: red;
         }
+
+        .forgot-password {
+            margin-top: 10px;
+        }
+
+        .forgot-password a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -101,6 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">Login</button>
         </form>
         <p>Don't have an account? <a href="register.php">Register</a></p>
+        <p class="forgot-password"><a href="/pages/forgot_password.php">Forgot Password?</a></p>
     </div>
 </body>
 
