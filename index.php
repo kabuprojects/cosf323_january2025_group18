@@ -74,6 +74,7 @@
                 <li class="nav-item"><a class="nav-link" href="/pages/feedback.php">Feedback</a></li>
                 <li class="nav-item"><a class="nav-link" href="/pages/about.php">About</a></li>
                 <li class="nav-item"><a class="nav-link btn-get-started" href="/authentication/login.php">LOGIN</a></li>
+                </li>
             </ul>
         </div>
     </nav>

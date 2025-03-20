@@ -1,19 +1,12 @@
 <?php
-//session_start();
-include '../authentication/db.php'; // Database connection
+session_start();
+include '../authentication/db.php';
 
-// Set default language if not chosen
-if (!isset($_SESSION['lang'])) {
-    $_SESSION['lang'] = 'English';
-}
-
-// Fetch Courses from DB
-$column_title = $_SESSION['lang'] == 'English' ? 'title_en' : 'title_sw';
-$column_content = $_SESSION['lang'] == 'English' ? 'content_en' : 'content_sw';
-
-$query = "SELECT $column_title AS title, $column_content AS content, category FROM cybersecurity_content ORDER BY created_at DESC";
+// Fetch English content
+$query = "SELECT title_en, content_en, created_at FROM cybersecurity_content ORDER BY created_at DESC";
 $result = mysqli_query($conn, $query);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +19,7 @@ $result = mysqli_query($conn, $query);
         body {
             background-color: #2c3e50;
             color: white;
+
         }
 
         .hero {
@@ -80,146 +74,26 @@ $result = mysqli_query($conn, $query);
                 <li class="nav-item"><a class="nav-link" href="/pages/contactus.php">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="/pages/feedback.php">Feedback</a></li>
                 <li class="nav-item"><a class="nav-link" href="/pages/about.php">About</a></li>
+                <li class="nav-item"><a class="nav-link btn-get-started" href="/authentication/login.php">LOGIN</a></li>
+            </ul>
         </div>
     </nav>
-
     <br>
-    <?php
-    // Cybersecurity Threats Content for English
-    $awareness = [
-        "title" => "Cybersecurity Awareness in Kenya",
-        "intro" => "Welcome to our Cybersecurity Education Platform. This section provides key lessons on staying safe online in Kenya.",
-        "threats_title" => "Common Cyber Threats in Kenya"
-    ];
-    $content = [
-        [
-            "title" => "1. Mobile Money Scams",
-            "definition" => "A type of fraud where attackers trick victims into sending money or revealing mobile banking details.",
-            "safety_measures" => [
-                "Always verify caller identity before sending money.",
-                "Do not share PINs or OTPs with anyone.",
-                "Use official customer service numbers for assistance."
-            ],
-            "regulation" => "Kenyan Regulation: Central Bank of Kenya (CBK) - Guidelines on mobile money fraud prevention.",
-            "real_life_example" => "In 2022, Kenyans lost millions to fraudsters posing as Safaricom M-Pesa agents, requesting PINs and withdrawing funds.",
-            "case_study" => "A Nairobi businessman lost KSh 50,000 after receiving a fake 'SIM card upgrade' request."
-        ],
-        [
-            "title" => "2. Phishing Attacks",
-            "definition" => "A type of cybercrime where attackers impersonate legitimate organizations to steal sensitive data.",
-            "safety_measures" => [
-                "Always verify email sources.",
-                "Don't click on suspicious links.",
-                "Enable multi-factor authentication (MFA)."
-            ],
-            "regulation" => "Kenyan Regulation: Computer Misuse and Cybercrimes Act (2018) - Section 28 prohibits phishing activities.",
-            "real_life_example" => "In 2022, Kenyan banks reported an increase in phishing scams where attackers mimicked bank emails to trick customers into revealing their online banking details."
-        ],
-        [
-            "title" => "3. Identity Theft",
-            "definition" => "Unauthorized use of someone’s personal information for fraud.",
-            "safety_measures" => [
-                "Use strong, unique passwords.",
-                "Avoid sharing personal details on social media.",
-                "Monitor bank transactions regularly."
-            ],
-            "regulation" => "Kenyan Regulation: National Payment Systems Act - Protects consumers from financial fraud.",
-            "real_life_example" => "A Nairobi-based company lost KSh 2 million when attackers used stolen employee credentials to gain access to payroll systems."
-        ],
-        [
-            "title" => "4. Ransomware",
-            "definition" => "Malware that encrypts files and demands a ransom for decryption.",
-            "safety_measures" => [
-                "Regularly back up your data.",
-                "Don't open suspicious email attachments.",
-                "Use reputable antivirus software."
-            ],
-            "regulation" => "Kenyan Regulation: Data Protection Act (2019) - Requires organizations to protect personal data from cyber threats.",
-            "case_study" => "In 2023, a Kenyan healthcare provider was attacked by the 'WannaCry' ransomware, leading to patient data being locked for several days."
-        ],
-        [
-            "title" => "5. Social Engineering Attacks",
-            "definition" => "Manipulating individuals to reveal confidential information.",
-            "safety_measures" => [
-                "Verify caller identities before sharing information.",
-                "Avoid posting sensitive details publicly.",
-                "Train employees on social engineering tactics."
-            ],
-            "regulation" => "Kenyan Regulation: Cybercrime Act (2018) - Section 31 criminalizes fraudulent cyber activities.",
-            "case_study" => "A Kenyan government employee unknowingly gave access to classified files after receiving a fake IT support call."
-        ],
-        [
-            "title" => "6. Pyramid and Ponzi Schemes",
-            "definition" => "Fraudulent investment schemes promising high returns with little risk.",
-            "safety_measures" => [
-                "Be cautious of 'too good to be true' investment offers.",
-                "Verify the legitimacy of financial schemes with regulatory authorities.",
-                "Avoid investments that require recruitment to earn money."
-            ],
-            "regulation" => "Kenyan Regulation: Capital Markets Authority Act - Outlaws pyramid schemes.",
-            "real_life_example" => "In 2021, thousands of Kenyans lost money in the 'Amazon Web Worker' Ponzi scheme, which collapsed after luring investors with fake returns."
-        ],
-        [
-            "title" => "7. Data Breaches",
-            "definition" => "Unauthorized access to confidential data.",
-            "safety_measures" => [
-                "Encrypt sensitive files.",
-                "Use firewalls and strong access controls.",
-                "Regular security audits."
-            ],
-            "regulation" => "Kenyan Regulation: Data Protection Act (2019) - Mandates organizations to report breaches to the Data Commissioner.",
-            "real_life_example" => "In 2021, a major Kenyan telecom provider faced a breach where thousands of customer records were exposed online."
-        ],
-        [
-            "title" => "8. Malware & Viruses",
-            "definition" => "Malicious software that disrupts or damages systems.",
-            "safety_measures" => [
-                "Keep software updated.",
-                "Use trusted antivirus programs.",
-                "Avoid downloading files from unknown sources."
-            ],
-            "regulation" => "Kenyan Regulation: Computer Misuse Act - Outlaws creating and distributing malware.",
-            "case_study" => "The 'ILOVEYOU' virus once infected thousands of Kenyan computers, leading to massive data loss.",
-            "cta" => "Take our cybersecurity quiz to test your knowledge!",
-        ]
-    ];
-    ?>
 
-    <div class="awareness">
-        <h1><?php echo htmlspecialchars($awareness['title']); ?></h1>
-        <p><?php echo htmlspecialchars($awareness['intro']); ?></p>
-        <h2><?php echo htmlspecialchars($awareness['threats_title']); ?></h2>
-    </div>
+    <body>
+        <div class="container">
+            <h1>Cybersecurity Awareness in Kenya</h1>
+            <a>Welcome to our Cybersecurity Education Platform. This section provides key lessons on staying safe online in Kenya.</a>
+            <h2>Common Cyber Threats in Kenya</h2>
 
-    <?php foreach ($content as $threat): ?>
-        <div class="threat">
-            <h2><?php echo htmlspecialchars($threat['title']); ?></h2>
-            <p><strong>Definition:</strong> <?php echo htmlspecialchars($threat['definition']); ?></p>
-            <p><strong>Safety Measures:</strong></p>
-            <ul>
-                <?php foreach ($threat['safety_measures'] as $measure): ?>
-                    <li><?php echo htmlspecialchars($measure); ?></li>
-                <?php endforeach; ?>
-            </ul>
-            <p><strong>Regulation:</strong> <?php echo htmlspecialchars($threat['regulation']); ?></p>
-            <?php if (isset($threat['real_life_example'])): ?>
-                <p><strong>Real-Life Example:</strong> <?php echo htmlspecialchars($threat['real_life_example']); ?></p>
-            <?php endif; ?>
-            <?php if (isset($threat['case_study'])): ?>
-                <p><strong>Case Study:</strong> <?php echo htmlspecialchars($threat['case_study']); ?></p>
-            <?php endif; ?>
-            <?php if (isset($threat['cta'])): ?>
-                <p><strong></strong> <a href="/pages/englishquizzes.php"><?php echo htmlspecialchars($threat['cta']); ?></a></p>
-            <?php endif; ?>
+            <?php
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<h2>" . htmlspecialchars($row['title_en']) . "</h2>";
+                echo "<p>" . nl2br(htmlspecialchars($row['content_en'])) . "</p>";
+                echo "<small>Published on: " . $row['created_at'] . "</small><hr>";
+            }
+            ?>
         </div>
-    <?php endforeach; ?>
-
-
-
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+    </body>
 
 </html>
