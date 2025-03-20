@@ -89,32 +89,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             color: red;
         }
 
-        .forgot-password {
+        .admin-login {
             margin-top: 10px;
+            background: #ff0000;
         }
 
-        .forgot-password a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .forgot-password a:hover {
-            text-decoration: underline;
+        .admin-login:hover {
+            background: #cc0000;
         }
     </style>
 </head>
 
 <body>
     <div class="form-container">
-        <h2>Login</h2>
+        <h2>User Login</h2>
         <?php if (isset($error)) echo "<p class='error'>$error</p>"; ?>
-        <form action="login.php" method="POST">
+        <form action="/authentication/login.php" method="POST">
             <input type="email" name="email" placeholder="Email" required><br>
             <input type="password" name="password" placeholder="Password" required><br>
-            <button type="submit">Login</button>
+            <button type="submit">User Login</button>
         </form>
         <p>Don't have an account? <a href="register.php">Register</a></p>
-        <p class="forgot-password"><a href="/pages/forgot_password.php">Forgot Password?</a></p>
+        <br>
+        <form action="admin_login.php">
+            <button type="submit" class="admin-login">Admin Login</button>
+        </form>
     </div>
 </body>
 
